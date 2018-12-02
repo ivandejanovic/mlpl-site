@@ -1,0 +1,43 @@
+doctype html
+html
+  head(lang='en')
+    title MLPL - Multilingual Programming Language
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    meta(name='description', content='MLPL Multilinguale Programming language')
+    meta(name='keywords', content='programming, education, kids, children')
+    meta(charset='utf-8')
+    link(rel='stylesheet', type='text/css', href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700&subset=latin,latin-ext")
+    link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='styles/main.css')
+  body(class='mlpl')
+    div(class='navbar navbar-default mainNav')
+      div(class='container')
+        div(class='navbar-header')
+          a(href=indexUrl class='navbar-brand')
+            span(class='libLogo') #{mlpl}
+            span(class='libdesc') #{mlplLong}
+          button(type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#pagesNav' aria-expanded='false' aria-controls='navbar')
+            i(class='glyphicon glyphicon-menu-hamburger')
+        ul(id='pagesNav' class='nav navbar-nav navbar-collapse collapse navbar-right')
+          li
+            a(href=indexUrl)
+              span #{indexLabel}
+          li
+            a(href=docsUrl)
+              span #{docsLabel}
+          li(class='dropdown languageDropdown')
+            a(href=indexUrl data-toggle='dropdown' data-target='#langMenu' class='dropdown-toggle')
+              span(id='selectedLang')
+                img(class="flagImg" src=languageImage)
+                | #{languageLabel}
+              span(class='caret')
+            ul(id='languagePicker' class='dropdown-menu languagePicker')
+              each val in common
+                 li
+                  a(href=val.url data-lang=val.dataLanglabel)
+                    img(class='flagImg' src=val.image alt=altLabel)
+                    | #{val.languageLabel}
+    block content
+    script(type='text/javascript' src='https://code.jquery.com/jquery-1.12.3.min.js' integrity='sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=' crossorigin='anonymous')
+    script(type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')

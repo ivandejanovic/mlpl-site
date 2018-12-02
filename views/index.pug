@@ -1,0 +1,60 @@
+extends ./layout/default.pug
+
+block content
+  div(id='content_en' class='collapse in')
+    div(class='container')
+      div(class='jumbotron')
+        h1 #{index.jumbotronH1Label}
+        h3 #{index.jumbotronH3Label}
+        p #{index.jumbotronP1Label}
+        p #{index.jumbotronP2Label}
+      h3(class='text-center') #{index.h3Label}
+      div(class='row')
+        div(class='col-sm-6')
+          div(class='text-center')
+            p #{index.windowsP1Label}
+            p
+              a(class='btn btn-lg btn-primary' href=index.windowsUrl) #{index.windowsP2Label} 
+                i(class='fa fa-windows' aria-hidden='true')
+          div(class='well')
+            p #{index.windowsP3Label}
+            div(class='console_container')
+              p #{index.windowsP4Label}
+            p #{index.windowsP5Label}
+            div(class='console_container')
+              p #{index.windowsP6Label}
+            p #{index.windowsP7Label}
+        div(class='col-sm-6')
+          div(class='text-center')
+            p #{index.linuxP1Label}
+            p
+              a(class='btn btn-lg btn-primary' href=linuxUrl) #{index.linuxP2Label} 
+                i(class='fa fa-linux' aria-hidden='true')
+          div(class='well')
+            p #{index.linuxP3Label}
+            div(class='console_container')
+              p #{index.linuxP4Label}
+            p #{index.linuxP5Label}
+            div(class='console_container')
+              p #{index.linuxP6Label}
+            p #{index.linuxP7Label}
+    footer(class='mainFooter')
+      div(class='container')
+        div(class='row')
+          div(class='col-sm-6')
+            ul(class='mainFooter__nav')
+              li
+                a(href=indexUrl)
+                  | #{indexLabel}
+              li
+                a(href=docsUrl)
+                  | #{docsLabel}
+              li
+                a(href='https://github.com/ivandejanovic/mlpl')
+                  | #{index.githubLabel}
+          div(class='col-sm-6')
+            strong #{index.authorLabel}:
+            |  Ivan Dejanović
+          div(class='col-sm-6')
+            strong #{index.designerLabel}:
+            |  Ivan Stamenković
