@@ -69,7 +69,17 @@ const en = {
     strong1Label: 'read',
     p1Label: 'This instruction enables the user to supply an integer for the program to process. The value user supplies is placed in a variable.',
     code1Label: 'read x;',
-    p2Label: 'The instruction above read a integer user types on a console and places it into variable x.'
+    p2Label: 'The instruction above read a integer user types on a console and places it into variable x.',
+    p3Label: 'This instruction has to be followed by a semicolon.',
+    strong2Label: 'write',
+    p4Label: ' This instruction enables you to write out a variable, integer or a string to the console.',
+    code2Label: 'write x;',
+    p5Label: 'The instruction above writes a value of the variable to the console.',
+    code3Label: 'write 5;',
+    p6Label: 'The instruction above writes a value 5 to the console.',
+    code4Label: 'write "message";',
+    p7Label: 'The instruction above writes a value message to the console.',
+    p8Label: 'This instruction has to be followed by a semicolon.'
   }
 };
 
@@ -120,7 +130,17 @@ const rs = {
     strong1Label: 'procitaj',
     p1Label: 'Ova instrukcija omogućava korisniku da unese broj u program radi obrade. Vrednost koju korisnik unese se smesta u promenjivu.',
     code1Label: 'procitaj x;',
-    p2Label: 'Gornja instrukcija čita broj koji korisnik unese preko terminala i smešta u promenjivu x.'
+    p2Label: 'Gornja instrukcija čita broj koji korisnik unese preko terminala i smešta u promenjivu x.',
+    p3Label: 'Posle ove instrukcije mora da sledi tačka-zarez.',
+    strong2Label: 'ispisi',
+    p4Label: 'Ova instrukcija omogućava da se promenjiva, broj ili string ispiše na terminal.',
+    code2Label: 'ispisi x;',
+    p5Label: 'Gornja instrukcija ispisuje vrednost promenjive na terminal.',
+    code3Label: 'ispisi 5;',
+    p6Label: 'Gornja instrukcija vrednost 5 na terminal.',
+    code4Label: 'ispisi "poruka";',
+    p7Label: 'Gornja instrukcija vrednost poruka na terminal.',
+    p8Label: 'Posle ove instrukcije mora da sledi tačka-zarez.'
   }
 };
 
@@ -171,7 +191,17 @@ const es = {
     strong1Label: 'lea',
     p1Label: 'Esto permite que el usuario introduzca el número para su procesamiento por el programa. El valor que introduce el usuario se guarda en la variable.',
     code1Label: 'lea x;',
-    p2Label: 'La instrucción de arriba lee el número que el usuario introduce a través del terminal y se almacena en la variable x.'
+    p2Label: 'La instrucción de arriba lee el número que el usuario introduce a través del terminal y se almacena en la variable x.',
+    p3Label: 'Esta instrucción debe ir seguida por el punto y coma.',
+    strong2Label: 'escriba',
+    p4Label: 'Esta instrucción permite que la variable, el número o cadena de caracteres se muestre en el terminal.',
+    code2Label: 'escriba x;',
+    p5Label: 'La instrucción de arriba escribe el valor final de la variable en el terminal.',
+    code3Label: 'escriba 5;',
+    p6Label: 'La instrucción de arriba escribe el valor 5 en el terminal.',
+    code4Label: 'escriba "mensaje";',
+    p7Label: 'La instrucción de arriba escribe los valores de los mensajes en el terminal.',
+    p8Label: 'Esta instrucción debe ir seguida por el punto y coma.'
   }
 };
 
