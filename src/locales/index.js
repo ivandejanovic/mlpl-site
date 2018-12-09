@@ -79,7 +79,21 @@ const en = {
     p6Label: 'The instruction above writes a value 5 to the console.',
     code4Label: 'write "message";',
     p7Label: 'The instruction above writes a value message to the console.',
-    p8Label: 'This instruction has to be followed by a semicolon.'
+    p8Label: 'This instruction has to be followed by a semicolon.',
+    strong3Label: 'if then else end',
+    p9Label: 'This instruction enables the user to provide a condition. Depending if the condition is met or not one of other block of instructions is executed.',
+    code5Label: 'read x;',
+    code6Label: 'if x = 0 then',
+    code7Label: 'write "Number you entered is zero.";',
+    code8Label: 'else',
+    code9Label: 'write "Number you entered is not zero.";',
+    code10Label: 'end',
+    p10Label:
+      'The code above in first instruction read a integer user types on a console and places it into variable x. In next line it checks if value x is equals to zero. If x is equals to zero message "Number you entered is zero." is printed. If x is not equals to zero message "Number you entered is not zero." is printed.',
+    p11Label: 'Instructions then, else and end should not be followed by a semicolon.',
+    p12Label:
+      'Instruction if accepts two conditions. Equals "=" which checks if values compared are equal and less than "<" which checks if first value in comparation is less then the second value in comparation.',
+    p13Label: 'If you wish to check if the given variable is negative you would use the following code:'
   }
 };
 
@@ -140,7 +154,21 @@ const rs = {
     p6Label: 'Gornja instrukcija vrednost 5 na terminal.',
     code4Label: 'ispisi "poruka";',
     p7Label: 'Gornja instrukcija vrednost poruka na terminal.',
-    p8Label: 'Posle ove instrukcije mora da sledi tačka-zarez.'
+    p8Label: 'Posle ove instrukcije mora da sledi tačka-zarez.',
+    strong3Label: 'ako onda inace kraj',
+    p9Label: 'Ova instrukcija omogućava korisniku da zada uslov. U zavisnosti od toga da li je uslov ispunjen ili ne jedan ili drugi blok instrukcija se izvršava.',
+    code5Label: 'procitaj x;',
+    code6Label: 'ako x = 0 onda',
+    code7Label: 'ispisi "Broj koji ste uneli je nula.";',
+    code8Label: 'inace',
+    code9Label: 'ispisi "Broj koji ste uneli nije nula.";',
+    code10Label: 'kraj',
+    p10Label:
+      'Kod iznad u prvoj instrukciji čita broj koji je korisnik uneo preko terminala i smešta vrednost u promenjivu x. U sledećoj liniji proverava da li je vrednost x jednak nuli. Ukoliko je vrednost x jednaka nuli poruka "Broj koji ste uneli je nula." se štampa. Ukoliko vrednost x nije jednaka nuli poruka "Broj koji ste uneli nije nula." se štampa.',
+    p11Label: 'Iza instrukcije onda, inace i kraj ne treba da sledi tačka-zarez.',
+    p12Label:
+      'Instrukcija ako prihvata jedan od dva uslova. Jednako "=" koji proverava da li su vrednosti koje se porede jednake ili manje od "<" koja proverava da li je prva vrednost u komparaciji manja od druge vrednosti u komparaciji.',
+    p13Label: 'Ako želite da proverite da li je promenjiva negativna koristite sledeći kod:'
   }
 };
 
@@ -201,7 +229,21 @@ const es = {
     p6Label: 'La instrucción de arriba escribe el valor 5 en el terminal.',
     code4Label: 'escriba "mensaje";',
     p7Label: 'La instrucción de arriba escribe los valores de los mensajes en el terminal.',
-    p8Label: 'Esta instrucción debe ir seguida por el punto y coma.'
+    p8Label: 'Esta instrucción debe ir seguida por el punto y coma.',
+    strong3Label: 'si entonces de_otra_manera fin',
+    p9Label: 'Esto le permite al usuario poner una condición. Dependiendo de si esta condición se cumple o no, se ejecutará un bloque de instrucciones u otro.',
+    code5Label: 'lea x;',
+    code6Label: 'si x = 0 entonces',
+    code7Label: 'escriba "Se ha introducido el número cero.";',
+    code8Label: 'de_otra_manera',
+    code9Label: 'escriba "El número que ha introducido no es cero.";',
+    code10Label: 'fin',
+    p10Label:
+      'El código por encima (código de la primera instrucción) lee el número que el usuario ha introducido a través del terminal y almacena el valor de la variable x. La siguiente línea comprueba si el valor de x es igual a cero. Si el valor de x es igual a cero, se imprimirá el mensaje "Se ha introducido el número cero". Si el valor de x no es igual a cero, se imprimirá el mensaje "El número que ha introducido no es cero".',
+    p11Label: 'Las instrucciones entonces, de otra manera y fin no deben ir seguidas por el punto y coma.',
+    p12Label:
+      'La instrucción “si” acepta una de las dos condiciones. El signo igual a "=" comprueba si los valores comparados son iguales o menor que "<", que comprueba si el primer valor de comparación es menor que el segundo.',
+    p13Label: 'Si desea asegurarse que la variable es negativo, utilice el siguiente código:'
   }
 };
 

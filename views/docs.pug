@@ -21,24 +21,24 @@ block content
       p #{docs.p7Label}
       p #{docs.p8Label}
       p
-        strong if then else end:
-        |  This instruction enables the user to provide a condition. Depending if the condition is met or not one of other block of instructions is executed.
+        strong #{docs.strong3Label}:
+        |  #{docs.p9Label}
       code
-        | read x;
+        | #{docs.code5Label}
         br
-        |  if x = 0 then
+        |  #{docs.code6Label}
         br
-        | &nbsp;&nbsp;&nbsp;&nbsp;write "Number you entered is zero.";
+        | &nbsp;&nbsp;&nbsp;&nbsp;#{docs.code7Label}
         br
-        | else
+        | #{docs.code8Label}
         br
-        | &nbsp;&nbsp;&nbsp;&nbsp;write "Number you entered is not zero.";
+        | &nbsp;&nbsp;&nbsp;&nbsp;#{docs.code9Label}
         br
-        | end
-      p The code above in first instruction read a integer user types on a console and places it into variable x. In next line it checks if value x is equals to zero. If x is equals to zero message "Number you entered is zero." is printed. If x is not equals to zero message "Number you entered is not zero." is printed.
-      p Instructions then, else and end should not be followed by a semicolon.
-      p Instruction if accepts two conditions. Equals "=" which checks if values compared are equal and less than "<" which checks if first value in comparation is less then the second value in comparation.
-      p If you wish to check if the given variable is negative you would use the following code:
+        | #{docs.code10Label}
+      p #{docs.p10Label}
+      p #{docs.p11Label}
+      p #{docs.p12Label}
+      p #{docs.p13Label}
       code if x < 0 then
       p If you wish to check if the given variable is positive you would use the following code:
       code if 0 < x then
