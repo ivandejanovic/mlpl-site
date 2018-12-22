@@ -39,62 +39,62 @@ block content
       p #{docs.p11Label}
       p #{docs.p12Label}
       p #{docs.p13Label}
-      code if x < 0 then
-      p If you wish to check if the given variable is positive you would use the following code:
-      code if 0 < x then
+      code #{docs.code11Label}
+      p #{docs.p14Label}
+      code #{docs.code12Label}
       p
-        strong repeat until:
-        |  This instruction enables the user repeatly execute part of the code until the condition is met.
+        strong #{docs.strong4Label}
+        |  #{docs.p15Label}
       code
-        | x := 5;
+        | #{docs.code13Label}
         br
-        | repeat
+        | #{docs.code14Label}
         br
-        | &nbsp;&nbsp;&nbsp;&nbsp;write "In the loop.";
+        | &nbsp;&nbsp;&nbsp;&nbsp;#{docs.code15Label}
         br
-        | &nbsp;&nbsp;&nbsp;&nbsp;x := x - 1;
+        | &nbsp;&nbsp;&nbsp;&nbsp;#{docs.code16Label}
         br
-        | until x = 0
+        | #{docs.code17Label}
         br
-        | write "Exited the loop.";
+        | #{docs.code18Label}
         br
-      p The code above in first instruction places value 5 into variable x. In next line it starts the repeat block. Then message "In the loop." is printed. Variable x is decremented by 1. Then the condition is checked in the until instruction. If value x is not zero the loop is repeated. If value in x is 0 the message "Exited the loop." is printed.
-      p Instructions repeat and until should not be followed by a semicolon.
-      p Instruction until accepts two conditions. Equals "=" which checks if values compared are equal and less than "<" which checks if first value in comparation is less then the second value in comparation.
-      p If you wish to repeat the block until the given variable becomes negative you would use the following code:
-      code until x < 0
-      p If you wish to repeat the block until the given variable becomes positive you would use the following code:
-      code until 0 < x
+      p #{docs.p16Label}
+      p #{docs.p17Label}
+      p #{docs.p18Label}
+      p #{docs.p19Label}
+      code #{docs.code19Label}
+      p #{docs.p20Label}
+      code #{docs.code20Label}
       p
-        strong comments:
-        | The sign # is used for comments in the code. Anything between # signs is ignored by mlpl interpreter.
+        strong #{docs.strong5Label}
+        |  #{docs.p21Label}
       code
-        | #This is a comment.#
+        | #{docs.code21Label}
         br
-        | read x;
+        | #{docs.code22Label}
         br
-        | #This is another
+        | #{docs.code23Label}
         br
-        | comment spanning
+        | #{docs.code24Label}
         br
-        | multiple lines.#
+        | #{docs.code25Label}
         br
-        | write x
+        | #{docs.code26Label}
       p
-        strong arithmetic operations:
-        | Basic arithmetic operations are supported. Arithmetic operations are supported only on integeres.
-      p Assigment
-      code x := 2;
-      p Code above assign number 2 to variable x.
-      p Addition
-      code y := x + 1;
-      p Previous instruction takes value from x adds 1 to it and store results in y.
-      p Substration
-      code y := y - 1;
-      p Previous instruction takes value from y substract 1 from it and store results in y.
-      p Multiplication
-      code x := 2 * 3;
-      p Previous instruction takes multiply 2 with 3 and stores result in x.
-      p Division
-      code z := x / y;
-      p Previous instruction takes value from x divide it by value taken from y and store results in z.
+        strong #{docs.strong6Label}
+        |  #{docs.p22Label}
+      p #{docs.p23Label}
+      code #{docs.code27Label}
+      p #{docs.p24Label}
+      p #{docs.p25Label}
+      code #{docs.code28Label}
+      p #{docs.p26Label}
+      p #{docs.p27Label}
+      code #{docs.code29Label}
+      p #{docs.p28Label}
+      p #{docs.p29Label}
+      code #{docs.code30Label}
+      p #{docs.p30Label}
+      p #{docs.p31Label}
+      code #{docs.code31Label}
+      p #{docs.p32Label}
