@@ -79,6 +79,23 @@ function initTerminal() {
     name: 'mlpl_demo',
     prompt: 'mlpl> '
   });
+
+  $.fn.confirm = async function confirm(message) {
+    const term = $(this).terminal();
+    const response = await new Promise((resolve, reject) => {
+      term.push((command) => {
+        try {
+          resolve(parseInt(command, 10));
+        } catch (err) {
+          reject(err);
+        }
+      }, {
+        prompt: message
+      });
+    });
+    term.pop();
+    return response;
+  };
 }
 
 function runCode() {
@@ -133,7 +150,17 @@ function runCode() {
   ];
 
   const vm = mlpl.vmFactory.getVm();
-  vm.execute(assembly, terminal);
+  const result = vm.execute(assembly, terminal);
+  if (!result.completed) {
+    terminal.confirm('Enter: ').then((command) => {
+      if (command) {
+        vm.mem.reg[result.regIndex] = command;
+        vm.executeCode(terminal);
+      }
+    }).catch((err) => {
+      terminal.error(err);
+    });
+  }
 }
 
 function init(root) {

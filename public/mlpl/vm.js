@@ -289,14 +289,17 @@ function initVm(root) {
         // Execute instruction
         switch (inst.iop) {
           case vm.opcode.opHALT:
-            return;
+            return { comleted: true };
           case vm.opcode.opPRNT:
             terminal.echo(str);
             break;
           case vm.opcode.opIN: {
-            const num = 5;
-            vm.mem.reg[r] = num;
-            break;
+            // const num = 5;
+            // vm.mem.reg[r] = num;
+            return {
+              completed: false,
+              regIndex: r
+            };
           }
           case vm.opcode.opOUT:
             terminal.echo(vm.mem.reg[r]);
@@ -360,15 +363,18 @@ function initVm(root) {
             }
             break;
           default:
-            return;
+            terminal.error('Some error');
+            return { compoeted: true };
         }
       }
     };
 
     vm.execute = function execute(assembly, terminal) {
       if (this.loadCode(assembly, terminal)) {
-        this.executeCode(terminal);
+        return this.executeCode(terminal);
       }
+      terminal.error('Some error');
+      return { completed: true };
     };
 
     return vm;
