@@ -5,6 +5,9 @@
       "es6": true
     },
     "extends": ["airbnb"],
+    "globals": {
+      "monaco": true
+    },
     "rules": {
       "comma-dangle": ["error", "never"]
   }

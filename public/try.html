@@ -4,11 +4,26 @@
     <title>Try</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta charset="utf-8" />
+    <link href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="styles/try.css" />
   </head>
   <body>
-    <div>Try</div>
+    <div class="header">
+      <h1>Try</h1>
+      <button class="run-btn">
+        <span>run</span>
+        <span class="run-btn-icon">
+          <svg class="run-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.388 14.873"><defs class="jsx-3550419329"></defs><g><path d="M.563,7.439q0-2.973,0-5.946a1.044,1.044,0,0,1,.051-.361A.694.694,0,0,1,1.664.805c.639.372,1.271.752,1.9,1.129q3.879,2.309,7.758,4.62A1.042,1.042,0,0,1,11.507,8.2a.931.931,0,0,1-.171.122Q6.544,11.177,1.75,14.03a.861.861,0,0,1-.63.16.7.7,0,0,1-.556-.716q0-1.609,0-3.22Z"></path></g></svg>
+        </span>
+      </button>
+    </div>
+
+    <div id="container" class="editor-container"></div>
+    <div id="console" class="editor-console"></div>
   </body>
 
+  <script src="https://unpkg.com/monaco-editor@0.8.3/min/vs/loader.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script src="https://terminal.jcubic.pl/js/jquery.terminal-0.8.8.min.js"></script>
   <script type="application/javascript" src="/mlpl/mlpl.js"></script>
 </html>
