@@ -82,7 +82,8 @@ function initVm(root) {
       opcodeMap.set('JEQ', vm.opcode.opJEQ);
       opcodeMap.set('JNE', vm.opcode.opJNE);
 
-      assembly.forEach((inst) => {
+      for (index = 0; index < assembly.length; index += 1) {
+        const inst = assembly[index];
         lineNo = +1;
 
         const instSlice = inst.trim(' ').split(':');
@@ -112,7 +113,7 @@ function initVm(root) {
         }
 
         const opCodeKey = opValue.slice(0, opIndex);
-        args = opValue.slice(opIndex + 1, opIndex.len).trim(' ');
+        args = opValue.slice(opIndex + 1, opIndex.length).trim(' ');
         op = opcodeMap.get(opCodeKey);
 
         if (!op) {
@@ -132,7 +133,7 @@ function initVm(root) {
           case vm.opcode.opDIV: {
             argsSlice = args.split(',');
 
-            if (argsSlice.len > 3) {
+            if (argsSlice.length > 3) {
               console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
@@ -175,13 +176,13 @@ function initVm(root) {
           case vm.opcode.opJEQ:
           case vm.opcode.opJNE: {
             const argsSlice1 = args.split(',');
-            if (argsSlice1.len !== 2) {
+            if (argsSlice1.length !== 2) {
               console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             const argsSlice2 = argsSlice1[1].split('(');
-            if (argsSlice2.len !== 2) {
+            if (argsSlice2.length !== 2) {
               console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
@@ -225,7 +226,18 @@ function initVm(root) {
       });
     };
 
-    vm.executeCode = function executeCode() {};
+    vm.executeCode = function executeCode() {
+      const execute = true;
+
+      while (execute) {
+        const r = 0;
+        const s = 0;
+        const t = 0;
+        const m = 0;
+        const str = '';
+        const pc = vm.mem.reg[vm.pcReg];
+      }
+    };
 
     vm.execute = function execute(assembly) {
       if (!this.loadCode(assembly)) {
