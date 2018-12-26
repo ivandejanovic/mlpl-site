@@ -64,6 +64,8 @@ require(['vs/editor/editor.main'], () => {
     theme: 'mlplTheme',
     language: 'mlpl'
   });
+
+  $(window).on('resize', () => editor.layout());
 });
 
 function initTerminal() {
@@ -131,7 +133,7 @@ function runCode() {
   ];
 
   const vm = mlpl.vmFactory.getVm();
-  vm.execute(assembly);
+  vm.execute(assembly, terminal);
 }
 
 function init(root) {

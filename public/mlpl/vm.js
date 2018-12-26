@@ -278,7 +278,7 @@ function initVm(root) {
           case vm.opcode.opJNE:
             r = inst.iarg1;
             s = inst.iarg3;
-            m = inst.iarg2 + vm.reg[s];
+            m = inst.iarg2 + vm.mem.reg[s];
 
             break;
           case vm.opcode.opPRNT:
