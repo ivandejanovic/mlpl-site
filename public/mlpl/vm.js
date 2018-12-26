@@ -39,6 +39,7 @@ function initVm(root) {
     vm.opcode.opJEQ = 17;
     vm.opcode.opJNE = 18;
 
+    vm.stepRESULT = {};
     vm.stepRESULT.srOKAY = 1;
     vm.stepRESULT.srHALT = 2;
     vm.stepRESULT.srIMEM_ERR = 3;
@@ -52,12 +53,13 @@ function initVm(root) {
     vm.loadCode = function loadCode(assembly) {
       let lineNo = 0;
       let loc = 0;
-      const op = 0;
-      const arg1 = 0;
-      const arg2 = 0;
-      const arg3 = 0;
-      const args = '';
-      const ok = true;
+      let op = 0;
+      let argsSlice = [];
+      let arg1 = 0;
+      let arg2 = 0;
+      let arg3 = 0;
+      let args = '';
+      let args1 = '';
       const opcodeMap = new Map();
 
       opcodeMap.set('HALT', vm.opcode.opHALT);
@@ -107,6 +109,116 @@ function initVm(root) {
           console.log(`Missing opcode on location ${instSlice[0]} on line: ${lineNo}\n`);
           return false;
         }
+
+        const opCodeKey = opValue.slice(0, opIndex);
+        args = opValue.slice(opIndex + 1, opIndex.len).trim(' ');
+        op = opcodeMap.get(opCodeKey);
+
+        if (!op) {
+          console.log(inst);
+          console.log(opCodeKey);
+          console.log(`Invalid opcode on location ${instSlice[0]} on line: ${lineNo}\n`);
+          return false;
+        }
+
+        switch (op) {
+          case vm.opcode.opHALT:
+          case vm.opcode.opIN:
+          case vm.opcode.opOUT:
+          case vm.opcode.opADD:
+          case vm.opcode.opSUB:
+          case vm.opcode.opMUL:
+          case vm.opcode.opDIV: {
+            argsSlice = args.split(',');
+
+            if (argsSlice.len > 3) {
+              console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            arg1 = parseInt(argsSlice[0].trim(' '), 10);
+            if (arg1.isNan()) {
+              console.log(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            arg2 = parseInt(argsSlice[1].trim(' '), 10);
+            if (arg2.isNan()) {
+              console.log(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            arg3 = parseInt(argsSlice[2].trim(' '), 10);
+            if (arg3.isNan()) {
+              console.log(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            vm.mem.iMem[loc] = {
+              iop: op,
+              iarg1: arg1,
+              iarg2: arg2,
+              iarg3: arg3
+            };
+
+            break;
+          }
+          case vm.opcode.opLD:
+          case vm.opcode.opST:
+          case vm.opcode.opLDA:
+          case vm.opcode.opLDC:
+          case vm.opcode.opJLT:
+          case vm.opcode.opJLE:
+          case vm.opcode.opJGT:
+          case vm.opcode.opJGE:
+          case vm.opcode.opJEQ:
+          case vm.opcode.opJNE: {
+            const argsSlice1 = args.split(',');
+            if (argsSlice1.len !== 2) {
+              console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            const argsSlice2 = argsSlice1[1].split('(');
+            if (argsSlice2.len !== 2) {
+              console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            arg1 = parseInt(argsSlice1[0].trim(' '), 10);
+            if (arg1.isNan()) {
+              console.log(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            arg2 = parseInt(argsSlice2[0].trim(' '), 10);
+            if (arg2.isNan()) {
+              console.log(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            arg3 = parseInt(argsSlice2[1].trim(')'), 10);
+            if (arg3.isNan()) {
+              console.log(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              return false;
+            }
+
+            break;
+          }
+          case vm.opcode.opPRNT:
+            args1 = args;
+            break;
+          default:
+            return false;
+        }
+
+        vm.mem.iMem[loc] = {
+          iop: op,
+          iarg1: arg1,
+          iarg2: arg2,
+          iarg3: arg3,
+          iargs1: args1
+        };
 
         return true;
       });
