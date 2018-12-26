@@ -30,6 +30,8 @@ const en = {
   indexLabel: 'Getting Started',
   docsUrl: 'docs',
   docsLabel: 'Documentation',
+  tryUrl: 'try.html',
+  tryPage: 'Try',
   languageLabel: 'english',
   languageImage: 'images/flag-united-kingdom.jpg',
   index: {
@@ -62,7 +64,10 @@ const en = {
     linuxP7Label: 'from the console.',
     githubLabel: 'MLPL on Github',
     authorLabel: 'MLPL author',
-    designerLabel: 'Website design'
+    designerLabel: 'Website design',
+    translationLabel: 'Translation',
+    translatorLabel: 'Ivan Dejanović',
+    tryLabel: 'Try page'
   },
   docs: {
     h1Label: 'Documentation',
@@ -150,6 +155,8 @@ const rs = {
   indexLabel: 'Kako početi',
   docsUrl: 'docs_rs',
   docsLabel: 'Dokumentacija',
+  tryUrl: 'try.html',
+  tryPage: 'Probaj',
   languageLabel: 'srpski',
   languageImage: 'images/flag-serbia.jpg',
   index: {
@@ -182,7 +189,10 @@ const rs = {
     linuxP7Label: 'u terminalu.',
     githubLabel: 'MLPL na Github-u',
     authorLabel: 'Autor MLPL-a',
-    designerLabel: 'Dizajn sajta'
+    designerLabel: 'Dizajn sajta',
+    translationLabel: 'Prevod',
+    translatorLabel: 'Ivan Dejanović',
+    tryLabel: 'Probaj stranica'
   },
   docs: {
     h1Label: 'Dokumentacija',
@@ -270,6 +280,8 @@ const es = {
   indexLabel: 'Página de inicio',
   docsUrl: 'docs_es',
   docsLabel: 'Documentación',
+  tryUrl: 'try.html',
+  tryPage: 'Tratar',
   languageLabel: 'español',
   languageImage: 'images/flag-spain.jpg',
   index: {
@@ -302,7 +314,10 @@ const es = {
     linuxP7Label: 'en el terminal.',
     githubLabel: 'MLPL en Github-u',
     authorLabel: 'Autor del MLPL',
-    designerLabel: 'Diseño de Página Web'
+    designerLabel: 'Diseño de Página Web',
+    translationLabel: 'Traducción',
+    translatorLabel: 'Zorana Tekelerović',
+    tryLabel: 'Tratar de Página Web'
   },
   docs: {
     h1Label: 'Documentación',
