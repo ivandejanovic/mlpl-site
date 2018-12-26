@@ -46,6 +46,7 @@ function initVm(root) {
     vm.stepRESULT.srDMEM_ERR = 4;
     vm.stepRESULT.srZERODIVIDE = 5;
 
+    vm.mem = {};
     vm.mem.iMem = new Array(vm.iaddrSize);
     vm.mem.dMem = new Array(vm.daddrSize);
     vm.mem.reg = new Array(vm.noRegs);
