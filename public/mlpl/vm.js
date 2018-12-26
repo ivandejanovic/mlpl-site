@@ -47,9 +47,9 @@ function initVm(root) {
     vm.stepRESULT.srZERODIVIDE = 5;
 
     vm.mem = {};
-    vm.mem.iMem = new Array(vm.iaddrSize);
-    vm.mem.dMem = new Array(vm.daddrSize);
-    vm.mem.reg = new Array(vm.noRegs);
+    vm.mem.iMem = new Array(vm.iaddrSize).fill(0);
+    vm.mem.dMem = new Array(vm.daddrSize).fill(0);
+    vm.mem.reg = new Array(vm.noRegs).fill(0);
 
     vm.loadCode = function loadCode(assembly) {
       let lineNo = 0;
@@ -292,6 +292,75 @@ function initVm(root) {
         switch (inst.iop) {
           case vm.opcode.opHALT:
             return;
+          case vm.opcode.opPRNT:
+            console.log(str);
+            break;
+          case vm.opcode.opIN: {
+            const num = 5;
+            vm.mem.reg[r] = num;
+            break;
+          }
+          case vm.opcode.opOUT:
+            console.log(vm.mem.reg[r]);
+            break;
+          case vm.opcode.opADD:
+            vm.mem.reg[r] = vm.mem.reg[s] + vm.mem.reg[t];
+            break;
+          case vm.opcode.opSUB:
+            vm.mem.reg[r] = vm.mem.reg[s] - vm.mem.reg[t];
+            break;
+          case vm.opcode.opMUL:
+            vm.mem.reg[r] = vm.mem.reg[s] * vm.mem.reg[t];
+            break;
+          case vm.opcode.opDIV:
+            if (vm.mem.reg[t] === 0) {
+              console.log('Division with zero.');
+              return;
+            }
+            vm.mem.reg[r] = vm.mem.reg[s] / vm.mem.reg[t];
+            break;
+          case vm.opcode.opLD:
+            vm.mem.reg[r] = vm.mem.dMem[m];
+            break;
+          case vm.opcode.opST:
+            vm.mem.dMem[m] = vm.mem.reg[r];
+            break;
+          case vm.opcode.opLDA:
+            vm.mem.reg[r] = m;
+            break;
+          case vm.opcode.opLDC:
+            vm.mem.reg[r] = inst.iarg2;
+            break;
+          case vm.opcode.opJLT:
+            if (vm.mem.reg[r] < 0) {
+              vm.mem.reg[vm.pcReg] = m;
+            }
+            break;
+          case vm.opcode.opJLE:
+            if (vm.mem.reg[r] <= 0) {
+              vm.mem.reg[vm.pcReg] = m;
+            }
+            break;
+          case vm.opcode.opJGT:
+            if (vm.mem.reg[r] > 0) {
+              vm.mem.reg[vm.pcReg] = m;
+            }
+            break;
+          case vm.opcode.opJGE:
+            if (vm.mem.reg[r] >= 0) {
+              vm.mem.reg[vm.pcReg] = m;
+            }
+            break;
+          case vm.opcode.opJEQ:
+            if (vm.mem.reg[r] === 0) {
+              vm.mem.reg[vm.pcReg] = m;
+            }
+            break;
+          case vm.opcode.opJNE:
+            if (vm.mem.reg[r] !== 0) {
+              vm.mem.reg[vm.pcReg] = m;
+            }
+            break;
           default:
             return;
         }
