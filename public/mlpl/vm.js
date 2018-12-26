@@ -51,7 +51,7 @@ function initVm(root) {
     vm.mem.dMem = new Array(vm.daddrSize).fill(0);
     vm.mem.reg = new Array(vm.noRegs).fill(0);
 
-    vm.loadCode = function loadCode(assembly) {
+    vm.loadCode = function loadCode(assembly, terminal) {
       let lineNo = 0;
       let loc = 0;
       let op = 0;
@@ -88,19 +88,19 @@ function initVm(root) {
 
         const instSlice = inst.trim(' ').split(':');
         if (instSlice < 2) {
-          console.log(`Missing colon on line: ${lineNo}\n`);
+          terminal.error(`Missing colon on line: ${lineNo}\n`);
           return false;
         }
 
         loc = parseInt(instSlice[0].trim(' '), 10);
 
         if (Number.isNaN(loc)) {
-          console.log(`Invalid memory location ${instSlice[0]} on line: ${lineNo}\n`);
+          terminal.error(`Invalid memory location ${instSlice[0]} on line: ${lineNo}\n`);
           return false;
         }
 
         if (loc > vm.iaddrSize) {
-          console.log(`To large memory location ${instSlice[0]} on line: ${lineNo}\n`);
+          terminal.error(`To large memory location ${instSlice[0]} on line: ${lineNo}\n`);
           return false;
         }
 
@@ -108,7 +108,7 @@ function initVm(root) {
         const opIndex = opValue.indexOf(' ');
 
         if (opIndex === -1) {
-          console.log(`Missing opcode on location ${instSlice[0]} on line: ${lineNo}\n`);
+          terminal.error(`Missing opcode on location ${instSlice[0]} on line: ${lineNo}\n`);
           return false;
         }
 
@@ -117,9 +117,7 @@ function initVm(root) {
         op = opcodeMap.get(opCodeKey);
 
         if (!op) {
-          console.log(inst);
-          console.log(opCodeKey);
-          console.log(`Invalid opcode on location ${instSlice[0]} on line: ${lineNo}\n`);
+          terminal.error(`Invalid opcode on location ${instSlice[0]} on line: ${lineNo}\n`);
           return false;
         }
 
@@ -134,25 +132,25 @@ function initVm(root) {
             argsSlice = args.split(',');
 
             if (argsSlice.length > 3) {
-              console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg1 = parseInt(argsSlice[0].trim(' '), 10);
             if (Number.isNaN(arg1)) {
-              console.log(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg2 = parseInt(argsSlice[1].trim(' '), 10);
             if (Number.isNaN(arg2)) {
-              console.log(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg3 = parseInt(argsSlice[2].trim(' '), 10);
             if (Number.isNaN(arg3)) {
-              console.log(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
@@ -177,31 +175,31 @@ function initVm(root) {
           case vm.opcode.opJNE: {
             const argsSlice1 = args.split(',');
             if (argsSlice1.length !== 2) {
-              console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             const argsSlice2 = argsSlice1[1].split('(');
             if (argsSlice2.length !== 2) {
-              console.log(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid number of arguments on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg1 = parseInt(argsSlice1[0].trim(' '), 10);
             if (Number.isNaN(arg1)) {
-              console.log(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg2 = parseInt(argsSlice2[0].trim(' '), 10);
             if (Number.isNaN(arg2)) {
-              console.log(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg3 = parseInt(argsSlice2[1].trim(')'), 10);
             if (Number.isNaN(arg3)) {
-              console.log(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
+              terminal.error(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
@@ -226,7 +224,7 @@ function initVm(root) {
       return true;
     };
 
-    vm.executeCode = function executeCode() {
+    vm.executeCode = function executeCode(terminal) {
       while (true) {
         let r = 0;
         let s = 0;
@@ -236,7 +234,7 @@ function initVm(root) {
         const pc = vm.mem.reg[vm.pcReg];
 
         if (pc < 0 || pc > vm.iaddrSize) {
-          console.log(`Invalid program counter value: ${pc}`);
+          terminal.error(`Invalid program counter value: ${pc}`);
           return;
         }
 
@@ -263,12 +261,12 @@ function initVm(root) {
             m = inst.iarg2 + vm.mem.reg[s];
 
             if (m < 0 || m > vm.daddrSize) {
-              console.log(`Invalid memory address value: ${m}`);
+              terminal.error(`Invalid memory address value: ${m}`);
               return;
             }
 
             break;
-          case vm.opcode.pLDA:
+          case vm.opcode.opLDA:
           case vm.opcode.opLDC:
           case vm.opcode.opJLT:
           case vm.opcode.opJLE:
@@ -293,7 +291,7 @@ function initVm(root) {
           case vm.opcode.opHALT:
             return;
           case vm.opcode.opPRNT:
-            console.log(str);
+            terminal.echo(str);
             break;
           case vm.opcode.opIN: {
             const num = 5;
@@ -301,7 +299,7 @@ function initVm(root) {
             break;
           }
           case vm.opcode.opOUT:
-            console.log(vm.mem.reg[r]);
+            terminal.echo(vm.mem.reg[r]);
             break;
           case vm.opcode.opADD:
             vm.mem.reg[r] = vm.mem.reg[s] + vm.mem.reg[t];
@@ -314,7 +312,7 @@ function initVm(root) {
             break;
           case vm.opcode.opDIV:
             if (vm.mem.reg[t] === 0) {
-              console.log('Division with zero.');
+              terminal.echo('Division with zero.');
               return;
             }
             vm.mem.reg[r] = vm.mem.reg[s] / vm.mem.reg[t];
@@ -367,9 +365,9 @@ function initVm(root) {
       }
     };
 
-    vm.execute = function execute(assembly) {
-      if (this.loadCode(assembly)) {
-        this.executeCode();
+    vm.execute = function execute(assembly, terminal) {
+      if (this.loadCode(assembly, terminal)) {
+        this.executeCode(terminal);
       }
     };
 
