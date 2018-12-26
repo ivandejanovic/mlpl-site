@@ -377,6 +377,7 @@ function initVm(root) {
       return { completed: true };
     };
 
+    vm.mem.dMem[0] = vm.daddrSize - 1;
     return vm;
   };
 }
