@@ -151,8 +151,8 @@ function runCode() {
 
   const vm = mlpl.vmFactory.getVm();
   const result = vm.execute(assembly, terminal);
-  if (!result.completed) {
-    terminal.confirm('Enter: ').then((command) => {
+  if (!result.completed && typeof result.regIndex !== 'undefined') {
+    terminal.confirm('-> ').then((command) => {
       if (command) {
         vm.mem.reg[result.regIndex] = command;
         vm.executeCode(terminal);
