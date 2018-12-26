@@ -132,9 +132,8 @@ function runCode() {
     '45:  HALT 0, 0, 0'
   ];
 
-  // const vm = mlpl.vmFactory.getVm();
-  // vm.execute(assembly);
-  terminal.echo('Enter value: ');
+  const vm = mlpl.vmFactory.getVm();
+  vm.execute(assembly);
 }
 
 function init(root) {

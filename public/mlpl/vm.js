@@ -93,7 +93,7 @@ function initVm(root) {
 
         loc = parseInt(instSlice[0].trim(' '), 10);
 
-        if (loc.isNan()) {
+        if (Number.isNaN(loc)) {
           console.log(`Invalid memory location ${instSlice[0]} on line: ${lineNo}\n`);
           return false;
         }
@@ -138,19 +138,19 @@ function initVm(root) {
             }
 
             arg1 = parseInt(argsSlice[0].trim(' '), 10);
-            if (arg1.isNan()) {
+            if (Number.isNaN(arg1)) {
               console.log(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg2 = parseInt(argsSlice[1].trim(' '), 10);
-            if (arg2.isNan()) {
+            if (Number.isNaN(arg2)) {
               console.log(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg3 = parseInt(argsSlice[2].trim(' '), 10);
-            if (arg3.isNan()) {
+            if (Number.isNaN(arg3)) {
               console.log(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
@@ -187,19 +187,19 @@ function initVm(root) {
             }
 
             arg1 = parseInt(argsSlice1[0].trim(' '), 10);
-            if (arg1.isNan()) {
+            if (Number.isNaN(arg1)) {
               console.log(`Invalid first argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg2 = parseInt(argsSlice2[0].trim(' '), 10);
-            if (arg2.isNan()) {
+            if (Number.isNaN(arg2)) {
               console.log(`Invalid second argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
 
             arg3 = parseInt(argsSlice2[1].trim(')'), 10);
-            if (arg3.isNan()) {
+            if (Number.isNaN(arg3)) {
               console.log(`Invalid third argument on location ${instSlice[0]} on line: ${lineNo}\n`);
               return false;
             }
