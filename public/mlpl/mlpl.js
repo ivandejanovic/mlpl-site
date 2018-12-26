@@ -160,6 +160,10 @@ function runCode() {
     }).catch((err) => {
       terminal.error(err);
     });
+
+    setTimeout(() => {
+      terminal.focus();
+    });
   }
 }
 
