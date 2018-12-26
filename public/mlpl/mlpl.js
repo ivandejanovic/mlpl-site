@@ -70,15 +70,13 @@ function initTerminal() {
   const $terminal = $('#terminal');
   terminal = $terminal.terminal((command) => {
     if (command !== '') {
-      console.log(command);
+      terminal.echo(`command: ${command}`);
     }
   }, {
     greetings: 'MLPL Interpreter',
     name: 'mlpl_demo',
     prompt: 'mlpl> '
   });
-
-  console.log(terminal);
 }
 
 function runCode() {

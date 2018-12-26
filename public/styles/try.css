@@ -404,6 +404,10 @@ h1 {
   border: none;
 }
 
+.run-btn:hover {
+  color: white;
+}
+
 .run-btn:focus {
   outline: none;
 }
@@ -411,13 +415,21 @@ h1 {
 .run-btn::before {
   content: "";
   position: absolute;
-  bottom: 0px;
+  bottom: -3px;
   left: 0px;
   right: 0px;
   top: 100%;
   z-index: -1;
   transition: top 0.09s ease-in 0s;
   background-color: #78b087 !important;
+}
+
+.run-btn:hover::before {
+  top: 0;
+}
+
+.run-btn:hover .run-btn-icon svg {
+  fill: white;
 }
 
 .run-btn-icon {
@@ -431,4 +443,8 @@ h1 {
 
 .run-btn-icon svg {
   fill: #78B088;
+}
+
+.terminal>div:not(.font) {
+  min-height: 0;
 }
