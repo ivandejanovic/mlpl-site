@@ -82,7 +82,7 @@ function initVm(root) {
       opcodeMap.set('JEQ', vm.opcode.opJEQ);
       opcodeMap.set('JNE', vm.opcode.opJNE);
 
-      for (index = 0; index < assembly.length; index += 1) {
+      for (let index = 0; index < assembly.length; index += 1) {
         const inst = assembly[index];
         lineNo = +1;
 
@@ -221,26 +221,85 @@ function initVm(root) {
           iarg3: arg3,
           iargs1: args1
         };
-
-        return true;
       }
+
+      return true;
     };
 
     vm.executeCode = function executeCode() {
-      const execute = true;
-
-      while (execute) {
-        const r = 0;
-        const s = 0;
-        const t = 0;
-        const m = 0;
-        const str = '';
+      while (true) {
+        let r = 0;
+        let s = 0;
+        let t = 0;
+        let m = 0;
+        let str = '';
         const pc = vm.mem.reg[vm.pcReg];
+
+        if (pc < 0 || pc > vm.iaddrSize) {
+          console.log(`Invalid program counter value: ${pc}`);
+          return;
+        }
+
+        vm.mem.reg[vm.pcReg] = pc + 1;
+        const inst = vm.mem.iMem[pc];
+
+        // Setup instruction arguments
+        switch (inst.iop) {
+          case vm.opcode.opHALT:
+          case vm.opcode.opIN:
+          case vm.opcode.opOUT:
+          case vm.opcode.opADD:
+          case vm.opcode.opSUB:
+          case vm.opcode.opMUL:
+          case vm.opcode.opDIV:
+            r = inst.iarg1;
+            s = inst.iarg2;
+            t = inst.iarg3;
+            break;
+          case vm.opcode.opLD:
+          case vm.opcode.opST:
+            r = inst.iarg1;
+            s = inst.iarg3;
+            m = inst.iarg2 + vm.mem.reg[s];
+
+            if (m < 0 || m > vm.daddrSize) {
+              console.log(`Invalid memory address value: ${m}`);
+              return;
+            }
+
+            break;
+          case vm.opcode.pLDA:
+          case vm.opcode.opLDC:
+          case vm.opcode.opJLT:
+          case vm.opcode.opJLE:
+          case vm.opcode.opJGT:
+          case vm.opcode.opJGE:
+          case vm.opcode.opJEQ:
+          case vm.opcode.opJNE:
+            r = inst.iarg1;
+            s = inst.iarg3;
+            m = inst.iarg2 + vm.reg[s];
+
+            break;
+          case vm.opcode.opPRNT:
+            str = inst.iargs1;
+            break;
+          default:
+            return;
+        }
+
+        // Execute instruction
+        switch (inst.iop) {
+          case vm.opcode.opHALT:
+            return;
+          default:
+            return;
+        }
       }
     };
 
     vm.execute = function execute(assembly) {
-      if (!this.loadCode(assembly)) {
+      if (this.loadCode(assembly)) {
         this.executeCode();
       }
     };
