@@ -223,7 +223,7 @@ function initVm(root) {
         };
 
         return true;
-      });
+      }
     };
 
     vm.executeCode = function executeCode() {
