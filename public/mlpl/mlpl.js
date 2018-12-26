@@ -1,21 +1,22 @@
 /* eslint-env browser */
-/* eslint-disable */
 
 let editor;
-let proxy = URL.createObjectURL(new Blob([`
+let terminal;
+
+const proxy = URL.createObjectURL(new Blob([`
   self.MonacoEnvironment = {
     baseUrl: 'https://unpkg.com/monaco-editor@0.8.3/min/'
   };
   importScripts('https://unpkg.com/monaco-editor@0.8.3/min/vs/base/worker/workerMain.js');
   `], { type: 'text/javascript' }));
-require.config({ paths: { vs: 'https://unpkg.com/monaco-editor@0.8.3/min/vs' }});
+require.config({ paths: { vs: 'https://unpkg.com/monaco-editor@0.8.3/min/vs' } });
 window.MonacoEnvironment = { getWorkerUrl: () => proxy };
 
 function getSampleCode() {
   return `
 # Sample program in MLPL language - computes factorial #
 
-write "Enter positive number";
+write 'Enter positive number';
 read x; # input an integer #
 if 0 < x then # don't compute if x <= 0 #
 factorial := 1;
@@ -23,13 +24,13 @@ repeat
   factorial := factorial * x;
   x := x - 1;
 until x = 0
-write "Factorial for entered number is";
+write 'Factorial for entered number is';
 write factorial;  # output factorial of x #
 else
-write "You entered non-positive number";
+write 'You entered non-positive number';
 end
-write "Program exited";
-  `
+write 'Program exited';
+  `;
 }
 
 require(['vs/editor/editor.main'], () => {
@@ -40,9 +41,9 @@ require(['vs/editor/editor.main'], () => {
   monaco.languages.setMonarchTokensProvider('mlpl', {
     tokenizer: {
       root: [
-        [/#(.*?)#/, "mlpl-comment"],
-        [/"(.*?)"/, "mlpl-string"],
-        [/\[[a-zA-Z]+\]/, "mlpl-reserved"],
+        [/#(.*?)#/, 'mlpl-comment'],
+        [/'(.*?)'/, 'mlpl-string'],
+        [/\[[a-zA-Z]+\]/, 'mlpl-reserved']
       ]
     }
   });
@@ -54,57 +55,30 @@ require(['vs/editor/editor.main'], () => {
     rules: [
       { token: 'mlpl-comment', foreground: 'FFA500' },
       { token: 'mlpl-string', foreground: 'a31515' },
-      { token: 'mlpl-reserved', foreground: '333333' },
+      { token: 'mlpl-reserved', foreground: '333333' }
     ]
   });
 
-  // Register a completion item provider for the new language
-  monaco.languages.registerCompletionItemProvider('mlpl', {
-    provideCompletionItems: () => {
-      var suggestions = [{
-        label: 'simpleText',
-        kind: monaco.languages.CompletionItemKind.Text,
-        insertText: 'simpleText'
-      }, {
-        label: 'testing',
-        kind: monaco.languages.CompletionItemKind.Keyword,
-        insertText: 'testing(${1:condition})',
-        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet
-      }, {
-        label: 'ifelse',
-        kind: monaco.languages.CompletionItemKind.Snippet,
-        insertText: 'if ${1:condition}) then',
-        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
-        documentation: 'If-Else Statement'
-      }];
-      return { suggestions: suggestions };
-    }
-  });
-
-	editor = monaco.editor.create(document.getElementById('container'), {
+  editor = monaco.editor.create(document.getElementById('container'), {
     value: getSampleCode(),
     theme: 'mlplTheme',
     language: 'mlpl'
-	});
-	
-	editor.addListener('didType', () => {
-		console.log(editor.getValue());
-	});
+  });
 });
 
 function initTerminal() {
-  $('#console').terminal(function(command) {
+  const $terminal = $('#terminal');
+  terminal = $terminal.terminal((command) => {
     if (command !== '') {
-        var result = window.eval(command);
-        if (result != undefined) {
-            this.echo(String(result));
-        }
+      console.log(command);
     }
   }, {
-      greetings: 'MLPL Interpreter',
-      name: 'mlpl_demo',
-      prompt: 'mlpl> '
+    greetings: 'MLPL Interpreter',
+    name: 'mlpl_demo',
+    prompt: 'mlpl> '
   });
+
+  console.log(terminal);
 }
 
 function runCode() {
@@ -158,8 +132,9 @@ function runCode() {
     '45:  HALT 0, 0, 0'
   ];
 
-  const vm = mlpl.vmFactory.getVm();
-  vm.execute(assembly);
+  // const vm = mlpl.vmFactory.getVm();
+  // vm.execute(assembly);
+  terminal.echo('Enter value: ');
 }
 
 function init(root) {
@@ -168,9 +143,9 @@ function init(root) {
   root.mlpl = mlpl; //eslint-disable-line
 
   initTerminal();
-  $('#runBtn').on('click', (e) => runCode(e));
+  $('#runBtn').on('click', e => runCode(e));
 
-  mlpl.run = runCode
+  mlpl.run = runCode;
 }
 
 init(window);

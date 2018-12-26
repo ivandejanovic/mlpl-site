@@ -6,10 +6,15 @@
     },
     "extends": ["airbnb"],
     "globals": {
-      "monaco": true
+      "monaco": true,
+      "jQuery": true,
+      "$": true,
+      "mlpl": true
     },
     "rules": {
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": ["error", "never"],
+      "import/no-amd": 0,
+      "import/no-dynamic-require": 0
   }
 }
   
