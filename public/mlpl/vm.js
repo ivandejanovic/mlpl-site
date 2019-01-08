@@ -1,7 +1,7 @@
 /* eslint-env browser */
 
 function initVm(root) {
-  // Create app object to serve as namespace.
+  // Create mlpl object to serve as namespace.
   const vmFactory = root.mlpl.vmFactory || {};
 
   root.mlpl.vmFactory = vmFactory; //eslint-disable-line
