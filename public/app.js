@@ -18,6 +18,7 @@ require.config({ paths: { vs: 'https://unpkg.com/monaco-editor@0.8.3/min/vs' } }
 window.MonacoEnvironment = { getWorkerUrl: () => proxy };
 
 function getSampleCode() {
+  console.log(document.URL);
   return `
 # Sample program in MLPL language - computes factorial #
 

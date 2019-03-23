@@ -9,8 +9,8 @@ function docs(req, res, locale) {
   res.render('docs', locale);
 }
 
-function tryMlpl(req, res, locale) {
-  res.render('try', locale);
+function playground(req, res, locale) {
+  res.render('playground', locale);
 }
 
 function indexEn(req, res) {
@@ -37,16 +37,16 @@ function docsEs(req, res) {
   docs(req, res, locales.es);
 }
 
-function tryEn(req, res) {
-  tryMlpl(req, res, locales.en);
+function playgroundEn(req, res) {
+  playground(req, res, locales.en);
 }
 
-function tryRs(req, res) {
-  tryMlpl(req, res, locales.rs);
+function playgroundRs(req, res) {
+  playground(req, res, locales.rs);
 }
 
-function tryEs(req, res) {
-  tryMlpl(req, res, locales.es);
+function playgroundEs(req, res) {
+  playground(req, res, locales.es);
 }
 
 function setRoutes(app) {
@@ -57,9 +57,9 @@ function setRoutes(app) {
   app.get('/docs', docsEn);
   app.get('/docs_rs', docsRs);
   app.get('/docs_es', docsEs);
-  app.get('/try', tryEn);
-  app.get('/try_rs', tryRs);
-  app.get('/try_es', tryEs);
+  app.get('/playground', playgroundEn);
+  app.get('/playground_rs', playgroundRs);
+  app.get('/playground_es', playgroundEs);
 
   errors.setErrors(app);
 }

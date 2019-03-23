@@ -30,8 +30,8 @@ const en = {
   indexLabel: 'Getting Started',
   docsUrl: 'docs',
   docsLabel: 'Documentation',
-  tryUrl: 'try',
-  tryPage: 'Try',
+  playgroundUrl: 'playground',
+  playgroundPage: 'Try',
   languageLabel: 'english',
   languageImage: 'images/flag-united-kingdom.jpg',
   index: {
@@ -144,6 +144,10 @@ const en = {
     p31Label: 'Division',
     code31Label: 'z := x / y;',
     p32Label: 'Previous instruction takes value from x divide it by value taken from y and store results in z.'
+  },
+  playground: {
+    try: 'Try',
+    run: 'Run'
   }
 };
 
@@ -155,8 +159,8 @@ const rs = {
   indexLabel: 'Kako početi',
   docsUrl: 'docs_rs',
   docsLabel: 'Dokumentacija',
-  tryUrl: 'try_rs',
-  tryPage: 'Probaj',
+  playgroundUrl: 'playground_rs',
+  playgroundPage: 'Probaj',
   languageLabel: 'srpski',
   languageImage: 'images/flag-serbia.jpg',
   index: {
@@ -269,6 +273,10 @@ const rs = {
     p31Label: 'Deljenje',
     code31Label: 'z := x / y;',
     p32Label: 'Kod iznad uzima vrednost i promenjive x deli sa vrednošću iz promenjive y i rezultat smešta u promenjivu z.'
+  },
+  playground: {
+    try: 'Probaj',
+    run: 'Pokreni'
   }
 };
 
@@ -280,8 +288,8 @@ const es = {
   indexLabel: 'Página de inicio',
   docsUrl: 'docs_es',
   docsLabel: 'Documentación',
-  tryUrl: 'try_es',
-  tryPage: 'Tratar',
+  playgroundUrl: 'playground_es',
+  playgroundPage: 'Tratar',
   languageLabel: 'español',
   languageImage: 'images/flag-spain.jpg',
   index: {
@@ -394,6 +402,10 @@ const es = {
     p31Label: 'división',
     code31Label: 'z := x / y;',
     p32Label: 'El código de arriba toma el valor y divide la variable x con el valor de la variable y guardando el resultado en la variable z.'
+  },
+  playground: {
+    try: 'Tratar',
+    run: 'Ejecutar'
   }
 };
 
