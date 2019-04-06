@@ -147,7 +147,8 @@ const en = {
   },
   playground: {
     try: 'Try',
-    run: 'Run'
+    run: 'Run',
+    sampleUrl: '/mlpl/sampleEn.js'
   }
 };
 
@@ -276,7 +277,8 @@ const rs = {
   },
   playground: {
     try: 'Probaj',
-    run: 'Pokreni'
+    run: 'Pokreni',
+    sampleUrl: '/mlpl/sampleRs.js'
   }
 };
 
@@ -405,7 +407,8 @@ const es = {
   },
   playground: {
     try: 'Tratar',
-    run: 'Ejecutar'
+    run: 'Ejecutar',
+    sampleUrl: '/mlpl/sampleEs.js'
   }
 };
 

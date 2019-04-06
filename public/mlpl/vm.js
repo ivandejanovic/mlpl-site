@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-function initVm(root) {
+(function initVm(root) {
   // Create mlpl object to serve as namespace.
   const vmFactory = root.mlpl.vmFactory || {};
 
@@ -225,7 +225,7 @@ function initVm(root) {
     };
 
     vm.executeCode = function executeCode(terminal) {
-      while (true) {
+      for (;;) {
         let r = 0;
         let s = 0;
         let t = 0;
@@ -380,6 +380,4 @@ function initVm(root) {
     vm.mem.dMem[0] = vm.daddrSize - 1;
     return vm;
   };
-}
-
-initVm(window);
+}(window));

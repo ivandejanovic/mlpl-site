@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-function initCompiler(root) {
+(function initCompiler(root) {
   // Create mlpl object to serve as namespace.
   const compiler = root.mlpl.compiler || {};
 
@@ -58,6 +58,4 @@ function initCompiler(root) {
 
     return assembly;
   };
-}
-
-initCompiler(window);
+}(window));

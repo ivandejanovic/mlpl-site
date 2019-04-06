@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-function initMLPL(root) {
+(function initMLPL(root) {
   // Create mlpl object to serve as namespace
   const mlpl = root.mlpl || {};
 
@@ -16,6 +16,4 @@ function initMLPL(root) {
   };
 
   root.mlpl = mlpl; //eslint-disable-line
-}
-
-initMLPL(window);
+}(window));
