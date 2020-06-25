@@ -1,5 +1,5 @@
 const errors = require('./errors');
-const locales = require('./../locales');
+const locales = require('../locales');
 
 function index(req, res, locale) {
   res.render('index', locale);
@@ -65,5 +65,5 @@ function setRoutes(app) {
 }
 
 module.exports = {
-  setRoutes
+  setRoutes,
 };
