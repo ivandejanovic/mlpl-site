@@ -30,6 +30,8 @@ const en = {
   indexLabel: 'Getting Started',
   docsUrl: 'docs',
   docsLabel: 'Documentation',
+  playgroundUrl: 'playground',
+  playgroundPage: 'Try',
   languageLabel: 'english',
   languageImage: 'images/flag-united-kingdom.jpg',
   index: {
@@ -62,7 +64,10 @@ const en = {
     linuxP7Label: 'from the console.',
     githubLabel: 'MLPL on Github',
     authorLabel: 'MLPL author',
-    designerLabel: 'Website design'
+    designerLabel: 'Website design',
+    translationLabel: 'Translation',
+    translatorLabel: 'Ivan Dejanović',
+    tryLabel: 'Try page'
   },
   docs: {
     h1Label: 'Documentation',
@@ -139,6 +144,11 @@ const en = {
     p31Label: 'Division',
     code31Label: 'z := x / y;',
     p32Label: 'Previous instruction takes value from x divide it by value taken from y and store results in z.'
+  },
+  playground: {
+    try: 'Try',
+    run: 'Run',
+    sampleUrl: '/mlpl/sampleEn.js'
   }
 };
 
@@ -150,6 +160,8 @@ const rs = {
   indexLabel: 'Kako početi',
   docsUrl: 'docs_rs',
   docsLabel: 'Dokumentacija',
+  playgroundUrl: 'playground_rs',
+  playgroundPage: 'Probaj',
   languageLabel: 'srpski',
   languageImage: 'images/flag-serbia.jpg',
   index: {
@@ -182,7 +194,10 @@ const rs = {
     linuxP7Label: 'u terminalu.',
     githubLabel: 'MLPL na Github-u',
     authorLabel: 'Autor MLPL-a',
-    designerLabel: 'Dizajn sajta'
+    designerLabel: 'Dizajn sajta',
+    translationLabel: 'Prevod',
+    translatorLabel: 'Ivan Dejanović',
+    tryLabel: 'Probaj stranica'
   },
   docs: {
     h1Label: 'Dokumentacija',
@@ -259,6 +274,11 @@ const rs = {
     p31Label: 'Deljenje',
     code31Label: 'z := x / y;',
     p32Label: 'Kod iznad uzima vrednost i promenjive x deli sa vrednošću iz promenjive y i rezultat smešta u promenjivu z.'
+  },
+  playground: {
+    try: 'Probaj',
+    run: 'Pokreni',
+    sampleUrl: '/mlpl/sampleRs.js'
   }
 };
 
@@ -270,6 +290,8 @@ const es = {
   indexLabel: 'Página de inicio',
   docsUrl: 'docs_es',
   docsLabel: 'Documentación',
+  playgroundUrl: 'playground_es',
+  playgroundPage: 'Tratar',
   languageLabel: 'español',
   languageImage: 'images/flag-spain.jpg',
   index: {
@@ -302,7 +324,10 @@ const es = {
     linuxP7Label: 'en el terminal.',
     githubLabel: 'MLPL en Github-u',
     authorLabel: 'Autor del MLPL',
-    designerLabel: 'Diseño de Página Web'
+    designerLabel: 'Diseño de Página Web',
+    translationLabel: 'Traducción',
+    translatorLabel: 'Zorana Tekelerović',
+    tryLabel: 'Tratar de Página Web'
   },
   docs: {
     h1Label: 'Documentación',
@@ -379,6 +404,11 @@ const es = {
     p31Label: 'división',
     code31Label: 'z := x / y;',
     p32Label: 'El código de arriba toma el valor y divide la variable x con el valor de la variable y guardando el resultado en la variable z.'
+  },
+  playground: {
+    try: 'Tratar',
+    run: 'Ejecutar',
+    sampleUrl: '/mlpl/sampleEs.js'
   }
 };
 

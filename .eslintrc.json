@@ -2,11 +2,20 @@
     "env": {
       "node": true,
       "mocha": true,
-      "es6": true
+      "es6": true,
+      "browser": true
     },
     "extends": ["airbnb"],
+    "globals": {
+      "monaco": true,
+      "jQuery": true,
+      "$": true,
+      "mlpl": true
+    },
     "rules": {
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": ["error", "never"],
+      "import/no-amd": 0,
+      "import/no-dynamic-require": 0,
+      "consistent-return": 0
   }
 }
-  
