@@ -20,7 +20,7 @@
     "monaco-editor": "^0.20.0",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
-    "pug": "^3.0.0"
+    "pug": "^3.0.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
