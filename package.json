@@ -41,7 +41,7 @@
     "mocha": "^10.4.0",
     "mocha-junit-reporter": "^2.2.1",
     "prettier": "^3.2.5",
-    "webpack": "^5.91.0"
+    "webpack": "^5.94.0"
   },
   "version": "1.0.0",
   "engines": {
